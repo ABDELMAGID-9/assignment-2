@@ -196,25 +196,24 @@ Then open: [http://localhost:8080](http://localhost:8080)
 | **AI Draft unavailable**  | Add an OpenAI API key or use fallback template. |
 | **CSS not updating**      | Hard refresh (`Ctrl/Cmd + Shift + R`).          |
 
----
 
-📋 Assignment Checklist
 
- Dynamic content (tabs, greeting, projects interactions)
+| Requirement                        | Description                                                                                                            | Completed |
+| :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------- | :-------: |
+| **1. Repository Setup**            | Public repo named `assignment-2` with clear structure, README, and `.gitignore`.                                       |     ✅     |
+| **2. Dynamic Content**             | Interactive content that changes with user input (tabs, greeting, projects list).                                      |     ✅     |
+| **3. Data Handling**               | Uses Local Storage, public API (Wikipedia REST), and form submission with validation.                                  |     ✅     |
+| **4. Animation & Transitions**     | Smooth animations for UI elements (fade, slide, reveal). Supports reduced-motion.                                      |     ✅     |
+| **5. Error Handling & Feedback**   | Inline validation, loading spinners, retry options, and empty states for missing data.                                 |     ✅     |
+| **6. AI Enhancement**              | AI Draft Assistant in the Contact form using OpenAI API or local fallback template.                                    |     ✅     |
+| **7. Technical Documentation**     | Complete `docs/technical-documentation.md` describing architecture, UX, and setup.                                     |     ✅     |
+| **8. AI Usage Report**             | Full `docs/ai-usage-report.md` including tools, prompts, outputs, edits, ethics, learning.                             |     ✅     |
+| **9. User Experience**             | Accessible, responsive, easy-to-navigate interface with clear color contrast and feedback.                             |     ✅     |
+| **10. Setup Instructions**         | Clear instructions for running locally (Live Server / Python / Node) and deployment steps.                             |     ✅     |
+| **11. Professional README**        | Well-structured README with project overview, AI summary, and deployment guide.                                        |     ✅     |
+| **12. Live Deployment (Optional)** | Hosted on GitHub Pages ([https://abdelmagid-9.github.io/assignment-2/](https://abdelmagid-9.github.io/assignment-2/)). |     ✅     |
 
- Data handling (Local Storage + Wikipedia API)
 
- Animations & transitions (with reduced-motion support)
-
- Error handling & user feedback (validation, retry, empty states)
-
- AI enhancement (AI Draft Assistant: API + local fallback)
-
- Comprehensive documentation (docs/ai-usage-report.md, docs/technical-documentation.md)
-
- Professional README (you’re reading it!)
-
----
 
 ## 📚 References
 
@@ -231,4 +230,3 @@ Developed by **Abdelmagid Osman**
 © 2025 — Educational use only.
 
 
-Styles not updating → hard refresh (Ctrl/Cmd + Shift + R).
