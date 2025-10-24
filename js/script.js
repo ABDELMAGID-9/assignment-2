@@ -1,6 +1,6 @@
-/* ========================
+/* 
    Helpers & Global State
-======================== */
+ */
 const $ = (sel, scope = document) => scope.querySelector(sel);
 const $$ = (sel, scope = document) => [...scope.querySelectorAll(sel)];
 const J = (v) => JSON.stringify(v);
@@ -27,9 +27,9 @@ const state = {
 function save(key, value){ localStorage.setItem(key, J(value)); }
 function load(key, fallback=null){ try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
 
-/* ========================
-   Theme (Local Storage + system pref)
-======================== */
+/* 
+   Theme
+ */
 function initialTheme(){
   const saved = load('theme', null);
   if (saved) return saved;
@@ -43,9 +43,9 @@ function applyTheme(theme){
 }
 function toggleTheme(){ applyTheme(state.theme === 'dark' ? 'light' : 'dark'); }
 
-/* ========================
+/* 
    Greeting & Name (Local Storage)
-======================== */
+ */
 function updateGreeting(){
   const el = $('#greetingText');
   const hours = new Date().getHours();
@@ -69,9 +69,9 @@ function initName(){
   });
 }
 
-/* ========================
+/* 
    Tabs (persist last tab)
-======================== */
+ */
 function setActiveTab(key){
   const tabs = $$('.tab'); const panels = $$('.tab-panel');
   tabs.forEach(b=>{
@@ -87,9 +87,9 @@ function initTabs(){
   $$('.tab').forEach(btn=> btn.addEventListener('click', ()=> setActiveTab(btn.dataset.tab)));
 }
 
-/* ========================
+/* 
    Projects (filter/sort/search + collapsible + empty state)
-======================== */
+ */
 function renderProjects(){
   const query = $('#searchInput')?.value.toLowerCase().trim() || '';
   const filter = $('#filterSelect')?.value || 'all';
@@ -138,9 +138,9 @@ function initProjectControls(){
   renderProjects();
 }
 
-/* ========================
-   SPORTS (Public API: Wikipedia REST)
-======================== */
+/* 
+   SPORTS (Public API: Wikipedia)
+ */
 function simplify(text){
   if (!text) return '';
   text = text.replace(/\s*\([^)]*\)\s*/g, ' ');
@@ -229,9 +229,9 @@ function filterSports(){
   $('#sportsEmpty').classList.toggle('hidden', shown !== 0);
 }
 
-/* ========================
+/* 
    Contact Form: Validation + feedback + loading state
-======================== */
+ */
 function validateEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 function setInvalid(id, isInvalid, msg){
   const input = $(id); input.setAttribute('aria-invalid', String(isInvalid));
@@ -263,11 +263,11 @@ async function handleContactSubmit(e){
   } finally { sendBtn.disabled = false; }
 }
 
-/* ========================
+/* 
    AI Draft Assistant
-   - Uses OpenAI if a key is provided (stored locally)
+   - Uses OpenAI if a key is provided stored locally
    - Otherwise uses a local smart template
-======================== */
+ */
 const AI_STORAGE_KEY = 'openai_key';
 function getAIKey(){ return load(AI_STORAGE_KEY, ''); }
 function saveAIKeyToStorage(k){ save(AI_STORAGE_KEY, k || ''); }
@@ -382,9 +382,9 @@ async function handleAIDraft(){
   }
 }
 
-/* ========================
+/* 
    Reveal on scroll
-======================== */
+ */
 let revealObserver;
 function observeReveals(){
   if(revealObserver) revealObserver.disconnect();
@@ -396,14 +396,11 @@ function observeReveals(){
   $$('.reveal').forEach(el => revealObserver.observe(el));
 }
 
-/* ========================
+/* 
    Utilities
-======================== */
+ */
 function debounce(fn, wait=150){ let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=> fn(...args), wait); }; }
 
-/* ========================
-   Init
-======================== */
 document.addEventListener('DOMContentLoaded', ()=>{
   applyTheme(initialTheme()); $('#themeToggle').addEventListener('click', toggleTheme);
   $('#year').textContent = new Date().getFullYear();
@@ -426,7 +423,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     setTimeout(()=> $('#aiStatus').textContent = '', 1500);
   });
 
-  // Preload saved key into field (masked)
+  // Preload saved key into field 
   const existingKey = getAIKey();
   if (existingKey) $('#aiKey').value = existingKey;
 
