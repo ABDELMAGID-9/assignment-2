@@ -8,7 +8,6 @@ Perfect — below is a **final, high-quality, professional, and well-structured 
 
 ## `README.md`
 
-```markdown
 # Assignment-2 · Interactive Portfolio
 
 A clean, responsive **single-page portfolio** built with **HTML, CSS, and Vanilla JavaScript**.  
@@ -77,7 +76,7 @@ The app is lightweight and works fully in the browser — no backend server is r
 
 ## 🧩 Project Structure
 
-```
+
 
 assignment-2/
 ├── README.md
@@ -92,9 +91,9 @@ assignment-2/
 ├── ai-usage-report.md
 └── technical-documentation.md
 
-````
 
----
+
+
 
 ## 🧑‍💻 Run the Project Locally
 
@@ -115,10 +114,9 @@ Then open: [http://localhost:8080](http://localhost:8080)
 
 ### ▶️ Option 3: Node (http-server)
 
-```bash
+bash
 npm install -g http-server
-http-server -p 8080
-```
+http-server -p 8080```
 
 Then open: [http://localhost:8080](http://localhost:8080)
 
