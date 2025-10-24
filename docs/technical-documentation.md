@@ -42,7 +42,6 @@ assignment-2/
 └── .gitignore
 
 markdown
-نسخ الكود
 
 ---
 
