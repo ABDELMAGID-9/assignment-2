@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assignment 2 — Interactive Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <meta name="description" content="Interactive portfolio demonstrating dynamic UI, sports API data handling, animations, error handling, and an AI draft assistant for contact messages."/>
+</head>
+<body>
+  <noscript>This site works best with JavaScript enabled.</noscript>
+
+  <header class="container header">
+    <div class="brand">
+      <h1>My Portfolio</h1>
+      <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌓</button>
+    </div>
+
+    <div class="greeting">
+      <p id="greetingText">Welcome!</p>
+      <form id="nameForm" class="inline-form" autocomplete="off" aria-label="Save your name">
+        <input id="nameInput" type="text" placeholder="Enter your name…" aria-label="Name"/>
+        <button class="btn" type="submit">Save</button>
+        <button class="btn ghost" id="clearName" type="button">Clear</button>
+      </form>
+    </div>
+
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" data-tab="about" role="tab" aria-selected="false">About</button>
+      <button class="tab" data-tab="sports" role="tab" aria-selected="false">Sports</button>
+      <button class="tab" data-tab="projects" role="tab" aria-selected="false">Projects</button>
+      <button class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- About -->
+    <section id="tab-about" class="tab-panel" role="tabpanel" aria-labelledby="about">
+      <h2 class="reveal">About Me</h2>
+      <p class="muted reveal">Hi, I’m building a clean, interactive portfolio for Assignment 2.</p>
+
+      <div class="cards">
+        <article class="card reveal">
+          <h3>Highlights</h3>
+          <ul>
+            <li>Personalized greeting saved in Local Storage</li>
+            <li>Theme + last used tab persist across visits</li>
+            <li>Animated, filterable project list with live search</li>
+            <li>Public API: <strong>Sports</strong> summaries (soccer, basketball, tennis, swimming, F1)</li>
+            <li>Accessible, validated contact form</li>
+            <li><strong>AI Draft Assistant</strong> for subject, message & help text (with offline fallback)</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sports (Public API) -->
+    <section id="tab-sports" class="tab-panel" role="tabpanel" aria-labelledby="sports">
+      <h2 class="reveal">Sports Interests</h2>
+      <p class="muted reveal">Short, easy-to-read info pulled from a public API (Wikipedia REST).</p>
+
+      <div class="toolbar reveal">
+        <input id="sportSearch" type="search" placeholder="Search sports…" aria-label="Search sports by name"/>
+        <button id="sportsRefresh" class="btn" type="button">Refresh</button>
+      </div>
+
+      <div id="sportsStatus" class="status reveal" role="status" aria-live="polite">
+        <span id="sportsLoading" class="spinner" aria-hidden="true"></span>
+        <span id="sportsMessage">Loading sports…</span>
+        <button id="sportsRetry" class="btn small hidden" type="button">Retry</button>
+      </div>
+
+      <div id="sportsGrid" class="grid"></div>
+
+      <p id="sportsEmpty" class="empty hidden" role="status" aria-live="polite">No sports matched your search.</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="tab-projects" class="tab-panel" role="tabpanel" aria-labelledby="projects">
+      <h2 class="reveal">Projects</h2>
+
+      <div class="toolbar reveal">
+        <input id="searchInput" type="search" placeholder="Search projects…" aria-label="Live search projects"/>
+        <select id="filterSelect" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option value="web">Web</option>
+          <option value="data">Data</option>
+          <option value="other">Other</option>
+        </select>
+        <select id="sortSelect" aria-label="Sort projects">
+          <option value="newest">Sort: Newest</option>
+          <option value="oldest">Sort: Oldest</option>
+          <option value="title">Sort: Title</option>
+        </select>
+      </div>
+
+      <div id="projectsList" class="list reveal"></div>
+      <p id="emptyState" class="empty hidden" role="status" aria-live="polite">No projects found.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="tab-contact" class="tab-panel" role="tabpanel" aria-labelledby="contact">
+      <h2 class="reveal">Contact</h2>
+
+      <form id="contactForm" novalidate class="card reveal" aria-describedby="formHelp">
+        <div class="row">
+          <div class="field">
+            <label for="cName">Name</label>
+            <input id="cName" name="name" type="text" required/>
+            <small class="error" id="errName" aria-live="polite"></small>
+          </div>
+
+          <div class="field">
+            <label for="cEmail">Email</label>
+            <input id="cEmail" name="email" type="email" required/>
+            <small class="error" id="errEmail" aria-live="polite"></small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="cSubject">Subject</label>
+            <input id="cSubject" name="subject" type="text"/>
+            <small class="error" id="errSubject" aria-live="polite"></small>
+          </div>
+
+          <div class="field">
+            <label for="purposeSelect">Purpose</label>
+            <select id="purposeSelect" aria-label="Message purpose">
+              <option value="greeting">Greeting</option>
+              <option value="inquiry" selected>Inquiry</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="support">Support</option>
+              <option value="thanks">Thanks</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="toneSelect">Tone</label>
+            <select id="toneSelect" aria-label="Writing tone">
+              <option value="friendly">Friendly</option>
+              <option value="professional" selected>Professional</option>
+              <option value="concise">Concise</option>
+              <option value="enthusiastic">Enthusiastic</option>
+              <option value="polite">Polite</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message" rows="6" required placeholder="Tell me a bit about what you need…"></textarea>
+          <small class="error" id="errMsg" aria-live="polite"></small>
+        </div>
+
+        <div id="formHelp" class="muted">All fields are required. Choose a purpose and tone, then use “Draft with AI”.</div>
+
+        <div class="ai-tools">
+          <button id="aiDraft" class="btn ghost" type="button" aria-describedby="aiHint">Draft with AI</button>
+          <span id="aiStatus" class="muted" aria-live="polite"></span>
+        </div>
+        <small id="aiHint" class="muted">
+          Optional: add your OpenAI API key below to use a live model. If not, a smart local template is used. The key is stored only in your browser (Local Storage).
+        </small>
+
+        <details class="ai-settings">
+          <summary>AI Settings (optional)</summary>
+          <div class="row">
+            <div class="field">
+              <label for="aiKey">OpenAI API key</label>
+              <input id="aiKey" type="password" placeholder="sk-..." autocomplete="off"/>
+            </div>
+            <div class="field">
+              <label>&nbsp;</label>
+              <button id="saveAIKey" class="btn small" type="button">Save Key</button>
+            </div>
+          </div>
+          <small class="muted">Stored as <code>openai_key</code> in Local Storage. You can clear it anytime.</small>
+        </details>
+
+        <button id="sendBtn" class="btn mt" type="submit">Send</button>
+        <div id="formStatus" class="status mt hidden" role="status" aria-live="polite"></div>
+      </form>
+
+      <details class="reveal">
+        <summary>FAQ: What happens when I submit?</summary>
+        <p>Your inputs are validated. A simulated request runs with a loading state, then a success or error message animates in.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> My Portfolio. Built for Assignment 2.</small>
+  </footer>
+
+  <!-- App code -->
+  <script src="js/script.js" defer></script>
+</body>
+</html>
