@@ -198,15 +198,21 @@ Then open: [http://localhost:8080](http://localhost:8080)
 
 ---
 
-## 📋 Assignment Checklist
+📋 Assignment Checklist
 
-* [x] Dynamic content (tabs, greeting, projects interactions)
-* [x] Data handling (Local Storage + Wikipedia API)
-* [x] Animations & transitions (with reduced-motion support)
-* [x] Error handling & user feedback (validation, retry, empty states)
-* [x] AI enhancement (AI Draft Assistant: API + local fallback)
-* [x] Comprehensive documentation (`docs/ai-usage-report.md`, `docs/technical-documentation.md`)
-* [x] Professional README (you’re reading it!)
+ Dynamic content (tabs, greeting, projects interactions)
+
+ Data handling (Local Storage + Wikipedia API)
+
+ Animations & transitions (with reduced-motion support)
+
+ Error handling & user feedback (validation, retry, empty states)
+
+ AI enhancement (AI Draft Assistant: API + local fallback)
+
+ Comprehensive documentation (docs/ai-usage-report.md, docs/technical-documentation.md)
+
+ Professional README (you’re reading it!)
 
 ---
 
