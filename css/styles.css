@@ -12,6 +12,7 @@
   --focus: #7c3aed;   
 }
 
+// Light Theme
 :root.light {
   --bg: #f8fafc;     
   --panel: #ffffff;
