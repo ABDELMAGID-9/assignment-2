@@ -174,7 +174,6 @@ Right-click index.html → Open with Live Server.
 Option B — simple Python server
 
 powershell
-نسخ الكود
 # Windows / Mac / Linux with Python 3
 python -m http.server 8080
 # then open http://localhost:8080 in your browser
@@ -265,7 +264,6 @@ handleAIDraft() → decides between API or local template
 Wikipedia Summary API (GET)
 
 ruby
-نسخ الكود
 https://en.wikipedia.org/api/rest_v1/page/summary/{Title}
 Response: { title, extract, thumbnail?, content_urls?... }
 Used to produce { title, summary, image, url }. No API key required.
@@ -273,7 +271,9 @@ Used to produce { title, summary, image, url }. No API key required.
 OpenAI Chat Completions (POST) (optional)
 
 yaml
-نسخ الكود
+
+
+
 https://api.openai.com/v1/chat/completions
 Headers: Authorization: Bearer <openai_key>, Content-Type: application/json
 Body: { model: "gpt-4o-mini", messages: [...], temperature: 0.7 }
@@ -366,7 +366,7 @@ docs/ for documentation updates
 Example:
 
 powershell
-نسخ الكود
+
 git checkout -b feature/ai-draft-assistant
 # edit files...
 git add .
